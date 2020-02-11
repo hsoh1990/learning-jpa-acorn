@@ -1,9 +1,6 @@
 package jpa.ex.ch02;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.util.List;
 
 public class JpaMain {
@@ -37,7 +34,7 @@ public class JpaMain {
         String id = "id1";
         Member member = new Member();
         member.setId(id);
-        member.setUsername("wellstone");
+//        member.setUsername("wellstone");
         member.setAge(2);
 
         // 객체를 저장한 상태(영속) --> 1차 캐쉬시에 저장
@@ -51,11 +48,19 @@ public class JpaMain {
         System.out.println("findMember=" + findMember.getUsername() + ", age=" + findMember.getAge());
 
 
-        // 영속성 컨테스트가 관리하지 않는 상태 (준영속)
+        // 영속성 컨테스트가 관리하지 않는 상태(준영속)를 만드지는 방법 3가
         em.detach(member);
+//        em.clear();
+//        em.close();
+
+        // 준영속 상태의 엔티티를 다시 영속 상태로 변경
+        Member merge = em.merge(member);
 
         // 객체를 삭제한 상태(삭제)
-        em.remove(member);
+        em.remove(merge);
+
+        // 프러시 모드 직접 설정
+        em.setFlushMode(FlushModeType.COMMIT);
 
         em.flush();
     }
