@@ -1,4 +1,4 @@
-package jpa.ex.ch02.entity;
+package jpa.ex.ch05.entity;
 
 import lombok.*;
 

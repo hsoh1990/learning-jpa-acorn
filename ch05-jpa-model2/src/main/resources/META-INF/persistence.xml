@@ -13,9 +13,10 @@
             <!-- 옵션 -->
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
-            <property name="hibernate.use_sql_comments" value="true" />
             <property name="hibernate.id.new_generator_mappings" value="true" />
-            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />  <!--table 자동 생성함 option -> create, create-drop, update, validate, none-->
+            <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/> <!--표기법 적용 (카멜 to 언더스코어)-->
+            <property name="hibernate.use_sql_comments" value="true" />
         </properties>
     </persistence-unit>
 
