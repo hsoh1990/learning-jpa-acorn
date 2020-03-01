@@ -1,9 +1,8 @@
-package jpa.ex.ch05;
+package jpa.ex.ch06;
 
-import jpa.ex.ch05.entity.*;
+import jpa.ex.ch06.entity.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
